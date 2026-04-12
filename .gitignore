@@ -1,0 +1,24 @@
+# Virtual Environments
+venv/
+env/
+.env
+
+# Python 
+__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
+
+# Large files to avoid pushing
+data/
+models/
+outputs/
+*.h5
+*.keras
+*.weights.h5
+
+# OS specific files
+.DS_Store
+Thumbs.db
