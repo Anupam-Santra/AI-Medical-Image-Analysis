@@ -186,10 +186,10 @@ python src/predict.py "image_path.jpg"
 ![Demo](images/demo.gif)
 
 ### 📈 Training Graph
-![Training Graph](outputs/training_history.png)
+![Training Graph](images/training_history.png)
 
 ### 📊 Confusion Matrix
-![Confusion Matrix](outputs/confusion_matrix.png)
+![Confusion Matrix](images/confusion_matrix.png)
 
 ---
 
