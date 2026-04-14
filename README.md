@@ -1,105 +1,250 @@
-# AI-Powered Medical Image Analysis System 🏥🔬
+# 🏥 AI-Powered Medical Image Analysis System  
+### Deep Learning-Based Pneumonia Detection from Chest X-Rays
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)
-![TorchVision](https://img.shields.io/badge/TorchVision-0.15+-red.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## Overview 🚀
-This project is an **AI-Powered Medical Image Analysis System** designed to assist radiologists in diagnosing **Pneumonia from Chest X-Rays** with high accuracy using Deep Learning. It showcases how a Convolutional Neural Network (CNN) can process medical imaging data, extract vital features (like opacities), and predict illness in a fraction of a second.
+---
 
-This repository is built as an end-to-end industry-standard virtual simulation. It features robust preprocessing pipelines, custom PyTorch model architecture, real-time metrics tracking on CPU/GPU, and evaluation outputs. 
+## 🚀 Overview
+This project is an **AI-Powered Medical Image Analysis System** that detects **Pneumonia from Chest X-Ray images** using Deep Learning.
 
-## Problem Statement 🩺
-- **The Challenge:** Radiologists review hundreds of scans daily. Fatigue leads to a higher rate of false negatives (missing an illness), delaying critical patient care.
-- **The Solution:** An AI binary classifier (Normal vs. Pneumonia) functioning as a "second pair of eyes," providing a preliminary diagnosis and confidence score instantly. 
+It demonstrates how a **Convolutional Neural Network (CNN)** can:
+- Process medical images  
+- Extract meaningful features  
+- Predict disease presence in real-time  
 
-## Tech Stack 💻
-- **Language:** Python 3.14
-- **Deep Learning:** PyTorch & TorchVision
-- **Computer Vision:** OpenCV
-- **Data Manipulation:** NumPy & Pandas
-- **Visualization:** Matplotlib & Seaborn
-- **Architecture:** Lightweight Sequential CNN (`nn.Module`) optimized for grayscale medical images.
+The system is built as a **complete end-to-end ML application**, including a **Streamlit-based web interface** for easy interaction.
 
-## Architecture 🏗️
-The images flow through our automated PyTorch pipeline:
-1. **Input Stage:** Kaggle X-Ray JPEG -> **`ImageFolder` + `transforms`** -> **Grayscale (1 Channel)** -> **Resize (224x224)** -> **Normalized Tensor**.
-2. **Feature Extraction:** 4 blocks of `nn.Conv2d` -> `nn.ReLU` -> `nn.MaxPool2d`.
-3. **Classification:** `nn.Flatten` -> `nn.Linear (512)` -> `nn.Dropout (50%)` -> `nn.Linear (1)`.
-4. **Output:** A percentage probability of Pneumonia via Sigmoid activation.
+---
 
-## Dataset Setup 📂
-This project uses the publicly available **[Chest X-Ray Images (Pneumonia) Dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)** from Kaggle. 
+## 🩺 Problem Statement
+- Radiologists analyze hundreds of X-rays daily  
+- Fatigue can lead to **false negatives (missed diagnoses)**  
+- Delayed detection can critically impact patient health  
 
-**Instructions to setup data:**
-1. Download the dataset from Kaggle.
-2. Extract the archive.
-3. Move the `train`, `val`, and `test` folders directly into `data/chest_xray/`.
-Your structure should look like this:
+### ✅ Proposed Solution
+An AI-based diagnostic assistant that:
+- Classifies X-rays as **Normal or Pneumonia**  
+- Provides **confidence scores**  
+- Acts as a **second opinion system**  
+
+---
+
+## 🌍 Industry Relevance
+- Healthcare AI is rapidly growing in **medical imaging diagnostics**  
+- Used in:
+  - Hospitals & radiology labs  
+  - Telemedicine platforms  
+  - AI-assisted diagnostic tools  
+
+### 💡 Real-World Impact
+- Reduces diagnostic workload  
+- Improves accuracy  
+- Enables faster decision-making  
+
+---
+
+## 💻 Tech Stack
+
+### Core Technologies
+- Python 3.14  
+- PyTorch & TorchVision  
+- Streamlit  
+
+### Data Processing
+- NumPy  
+- Pandas  
+- OpenCV  
+- PIL  
+
+### Visualization
+- Matplotlib  
+- Seaborn  
+
+---
+
+## 📂 Dataset
+Dataset used:  
+👉 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia  
+
+### Structure
 ```
-AI-Medical-Image-Analysis/
-└── data/
-    └── chest_xray/
-        ├── train/
-        │   ├── NORMAL/
-        │   └── PNEUMONIA/
-        ├── test/ ...
-        └── val/ ...
+data/chest_xray/
+├── train/
+├── val/
+└── test/
 ```
 
-## Installation 🛠️
+---
+
+## 🏗️ Architecture
+
+### Pipeline Flow
+```
+X-Ray Image
+   ↓
+Grayscale Conversion
+   ↓
+Resize (224x224)
+   ↓
+Normalization
+   ↓
+CNN Feature Extraction
+   ↓
+Fully Connected Layers
+   ↓
+Sigmoid Output (Probability)
+```
+
+### Model Details
+- 4 × Conv Blocks (`Conv2D + ReLU + MaxPool`)  
+- Flatten Layer  
+- Fully Connected Layer (512 neurons)  
+- Dropout (0.5)  
+- Output Layer (Sigmoid activation)  
+
+---
+
+## 🛠️ Installation
+
 ```bash
-# 1. Clone this repository
-git clone https://github.com/YourUsername/AI-Medical-Image-Analysis.git
+git clone https://github.com/Anupam-Santra/AI-Medical-Image-Analysis.git
 cd AI-Medical-Image-Analysis
 
-# 2. Create a virtual environment
 python -m venv venv
 
-# For Windows
-venv\Scripts\activate
-# For Mac/Linux
-source venv/bin/activate
+# Activate environment
+venv\Scripts\activate   # Windows
+source venv/bin/activate  # Mac/Linux
 
-# 3. Install required libraries
 pip install -r requirements.txt
 ```
 
-## Usage 🏃‍♂️
+---
 
-### 1. Train the Model
-Ensure your data is in the `data/` folder and run:
+## 🚀 Usage
+
+### 🔹 Run Web Application
+```bash
+streamlit run app.py
+```
+
+Open in browser:
+```
+http://localhost:8501
+```
+
+---
+
+### 🔹 One-Click Launch (Windows)
+Double-click:
+```
+start_app.bat
+```
+
+---
+
+### 🔹 Train Model
 ```bash
 python src/train.py
 ```
-*This will output the training process, generate an accuracy curve to `/outputs/training_history.png`, and save the best weights `pneumonia_cnn_model.pth` into the `/models/` folder.*
 
-### 2. Evaluate the System
-Test the model on the unseen `test` dataset:
+---
+
+### 🔹 Evaluate Model
 ```bash
 python src/predict.py
 ```
-*This will print the Test Accuracy/Loss, generate a full Classification Report (Precision/Recall/F1), and save a Confusion Matrix diagram to `/outputs/confusion_matrix.png`.*
 
-### 3. Predict a Single Image (Doctor Simulation)
+---
+
+### 🔹 Predict Single Image
 ```bash
-python src/predict.py "data/chest_xray/val/PNEUMONIA/person1946_bacteria_4874.jpeg"
-```
-*Output:*
-```
---- AI DIAGNOSIS ---
-Result: PNEUMONIA
-Confidence: 98.42%
+python src/predict.py "image_path.jpg"
 ```
 
-## Results & Screenshots 📈
-*(After running the code, place your screenshots in the `images/` folder and uncomment the links below!)*
-- **Training Graph:** `![Training Graph](outputs/training_history.png)`
-- **Confusion Matrix:** `![Confusion Matrix](outputs/confusion_matrix.png)`
+---
 
-## Learning Outcomes 🎓
-- Gained hands-on experience structuring a Deep Learning repository.
-- Built a custom Convolutional Neural Network from scratch in PyTorch.
-- Mastered dynamic DataLoaders for unstructured image data.
-- Implemented real-world model evaluation metrics (Confusion Matrix, F1-Score).
+## 📊 Results
+
+- Model successfully classifies Pneumonia vs Normal  
+- Provides **confidence-based predictions**  
+- Evaluation metrics include:
+  - Accuracy  
+  - Precision  
+  - Recall  
+  - F1 Score  
+
+---
+
+## 📸 Screenshots
+
+### 🎥 Live Demo
+![Demo](images/demo.gif)
+
+### 📈 Training Graph
+![Training Graph](outputs/training_history.png)
+
+### 📊 Confusion Matrix
+![Confusion Matrix](outputs/confusion_matrix.png)
+
+---
+
+## 🎓 Learning Outcomes
+
+- Built a **complete Deep Learning pipeline**  
+- Developed a **custom CNN model using PyTorch**  
+- Created a **user-friendly ML web application**  
+- Implemented **real-world evaluation metrics**  
+- Learned **project structuring for production-ready systems**  
+
+---
+
+# 🔥 Additional Enhancements
+
+## 📂 Project Structure
+```
+AI-Medical-Image-Analysis/
+├── app.py
+├── start_app.bat
+├── requirements.txt
+├── data/
+├── images/
+├── models/
+├── outputs/
+├── src/
+└── venv/
+```
+
+---
+
+## 🚀 Future Improvements
+- Cloud deployment (AWS / Streamlit Cloud)  
+- Multi-disease classification  
+- Model explainability (Grad-CAM)  
+- REST API integration (FastAPI)  
+
+---
+
+## 📄 License
+MIT License  
+
+---
+
+## ⭐ Support
+If you found this useful:
+- Star ⭐ the repo  
+- Fork 🍴 it  
+- Share 🚀  
+
+---
+
+## 👨‍💼 Author
+**Your Name**  
+GitHub: https://github.com/Anupam-Santra  
+LinkedIn: https://www.linkedin.com/in/anupam-santra-615832277/
+
+---
